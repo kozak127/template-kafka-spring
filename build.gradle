@@ -1,0 +1,38 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.13'
+    id "io.freefair.lombok" version "8.1.0"
+    id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'org.kozak127.templates'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // CORE
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.kafka:spring-kafka:2.9.0'
+
+    // TEST
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.kafka:spring-kafka-test:2.9.0'
+    testImplementation 'org.assertj:assertj-core:3.24.2'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+bootJar {
+    enabled = true
+}
